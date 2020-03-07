@@ -1,6 +1,6 @@
 import React, { useState, useContext} from 'react';
 import NavBarComponent from './NavBarComponent'
-import {Responsive, Container} from 'semantic-ui-react'
+import {Responsive, Container, Button, Icon, Menu} from 'semantic-ui-react'
 import { UseConfig } from '../ressources/useConfig';
 
 
@@ -21,14 +21,21 @@ const Header = (props) => {
 
 
     return (
+
 <>
+<Menu pointing secondary as={Responsive} minWidth={config.breakPoint}>
+          <NavBarComponent   />
+</Menu>
 
+<Menu pointing secondary as={Responsive} maxWidth={config.breakPoint-1}>
+          <Button
+          as={Icon} bar>
 
-<Container as={Responsive} style={{ margin: 220 }} minWidth="590" content="test"> 
-      <NavBarComponent   />
-        </Container>
-  </>          
-    );
+          </Button>
+          <NavBarComponent   />
+</Menu>
+</>
+);
 }
 
 export default Header;
