@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
-
+const jsonImporter = require('node-sass-json-importer')
 
 module.exports = {
     
@@ -43,9 +43,9 @@ module.exports = {
                 use: [
                     { loader: "style-loader" },
                     { loader: "css-loader" },
-                    { loader: "sass-loader" }
-                ]
-            },
+                    { loader: "sass-loader"
+                },
+            ]},
               {
                 // Match woff2 in addition to patterns like .woff?v=1.1.1.
                 test: /\.(ttf|png|eot|svg|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,

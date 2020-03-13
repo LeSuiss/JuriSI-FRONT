@@ -1,0 +1,11 @@
+
+
+$color : red;
+
+h1{border: solid $color 4px}
+
+
+
+:export{
+color: $color
+}

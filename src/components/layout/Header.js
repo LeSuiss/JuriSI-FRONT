@@ -1,14 +1,12 @@
 import React, { useState, useContext} from 'react';
-import NavBarComponent from './NavBarComponent'
+import MobileNavBar from './navbars/MobileNavbar'
 import {Responsive, Container, Button, Icon, Menu} from 'semantic-ui-react'
 import { UseConfig } from '../ressources/useConfig';
 
 
-
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const {config, dispatchConfig} = useContext(UseConfig).config
-
+    const [config, dispatchConfig] = useContext(UseConfig).config
 
 
 
@@ -19,21 +17,20 @@ const Header = (props) => {
     //     };
     // })()
 
-
     return (
 
 <>
-<Menu pointing secondary as={Responsive} minWidth={config.breakPoint}>
-          <NavBarComponent   />
-</Menu>
+<Responsive pointing secondary minWidth={config.breakPoint}>
+          <MobileNavBar   />
+</Responsive>
 
-<Menu pointing secondary as={Responsive} maxWidth={config.breakPoint-1}>
+<Responsive pointing secondary style={{border:"solid 1px red"}} maxWidth={config.breakPoint-1}>
           <Button
           as={Icon} bar>
 
           </Button>
-          <NavBarComponent   />
-</Menu>
+          <MobileNavBar   />
+</Responsive>
 </>
 );
 }
