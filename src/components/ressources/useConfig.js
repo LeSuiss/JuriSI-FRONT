@@ -1,6 +1,7 @@
 import React from 'react';
 import {createContext, useReducer} from 'react';
 import cssVariables from '../../scss/abstracts/_variables.scss'
+import fds from '../../'
 //setting up sites global variables
 
 export const UseConfig = createContext(null);
@@ -17,6 +18,7 @@ export const WebSiteConfig = (props) => {
         css: cssVariables
     })
     
+     console.log("ig.css")
     
     function reducer (config, action) {
         //change your state "config" based on the "action" relied to whatever element (button, input) is to  be triggered 
@@ -37,6 +39,7 @@ export const WebSiteConfig = (props) => {
                             config: [config, dispatchConfig]
                             //,AnotherOne : "whatever you think is suitable" 
         }} >
+            <pre>{JSON.stringify(cssVariables)}</pre>
             {config.debug &&   <div 
             style={{
                 position:"absolute", 

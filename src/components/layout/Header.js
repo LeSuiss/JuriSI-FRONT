@@ -1,6 +1,4 @@
 import React, { useState, useContext} from 'react';
-import MobileNavBar from './navbars/MobileNavbar'
-import {Responsive, Container, Button, Icon, Menu} from 'semantic-ui-react'
 import { UseConfig } from '../ressources/useConfig';
 
 
@@ -10,28 +8,22 @@ const Header = (props) => {
 
 
 
-    // (() => {
-    //     const dropElement = document.getElementsByClassName('dropdown-item')
-    //     for (let element of dropElement) {
-    //         element.classList.add('hvr-shutter-out-vertical')
-    //     };
-    // })()
+    
 
+
+
+
+
+    
     return (
 
-<>
-<Responsive pointing secondary minWidth={config.breakPoint}>
-          <MobileNavBar   />
-</Responsive>
+<div style={{border: `4px ${config.css.color} solid`}}>
+fdsqfdqs
+<pre>{JSON.stringify(config, undefined,2)}</pre>
+</div>
 
-<Responsive pointing secondary style={{border:"solid 1px red"}} maxWidth={config.breakPoint-1}>
-          <Button
-          as={Icon} bar>
 
-          </Button>
-          <MobileNavBar   />
-</Responsive>
-</>
+
 );
 }
 

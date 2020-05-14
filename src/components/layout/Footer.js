@@ -14,7 +14,6 @@ const Footer = () => {
                 <SocialMediaIconsReact icon="twitter" url="https://twitter.com/your-twitter-handle"/>
             
 
-
       <div className="footer-copyright text-center py-3">
         {new Date().getFullYear()} Copyright:
           <Link className='ReturnPage' to="/">AIOLIV</Link>

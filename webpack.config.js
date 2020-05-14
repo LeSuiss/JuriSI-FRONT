@@ -4,14 +4,17 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 const jsonImporter = require('node-sass-json-importer')
 
 module.exports = {
-    
+    devServer: {
+
+        compress: true,
+        port: 9000
+      },
 
    
     entry: [path.resolve(__dirname, 'src/index.js')],
     output: {
-        path: path.resolve(__dirname, 'dist/'),
+        path: path.resolve(__dirname, 'test'),
         filename: 'index.js',
-        publicPath: '/dist'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -73,8 +76,7 @@ module.exports = {
 //      },
     plugins: [
         new HtmlWebPackPlugin({
-          template: "./dist/index.html",
-          filename: "./dist/index.html",
+            template: './src/index.html'
         }),
         new ErrorOverlayPlugin()
       ],
