@@ -1,10 +1,10 @@
 import React, { useContext,useEffect, useState, useReducer, useRef} from 'react';
-import { UseConfig } from '../../ressources/useConfig';
+import { useContextConfig } from '../../../masterConfig';
 
 
 const HomePage = () => {
     const test = useRef()
-    const [config, dispatchConfig] = useContext(UseConfig).config
+    const [config, dispatchConfig] = useContext(useContextConfig).config
     const [state, setState] = useState("initialState")
   
 

@@ -3,7 +3,7 @@ import './scss/App.scss';
 import 'semantic-ui-css/semantic.min.css'
 
 import Router from './components/Router'
-import {WebSiteConfig} from './components/ressources/useConfig'
+import {ContextComponent} from './masterConfig'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 //import color from './scss/abstracts/_variables.scss'
@@ -15,7 +15,7 @@ function App() {
     return (
        <> 
         <div className="App" >
-            <WebSiteConfig>
+            <ContextComponent>
                 
                 <Header/>
                     <div id="mainContainer">
@@ -23,7 +23,7 @@ function App() {
                     </div>
                 <Footer/> 
 
-            </WebSiteConfig>
+            </ContextComponent>
         </div>
     
     </>)

@@ -1,10 +1,10 @@
 import React, { useState, useContext} from 'react';
-import { UseConfig } from '../ressources/useConfig';
+import { useContextConfig } from '../../masterConfig';
 
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [config, dispatchConfig] = useContext(UseConfig).config
+    const [config, dispatchConfig] = useContext(useContextConfig).config
 
 
 

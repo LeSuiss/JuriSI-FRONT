@@ -1,14 +1,14 @@
 import React from 'react';
 import {createContext, useReducer} from 'react';
-import cssVariables from '../../scss/abstracts/_variables.scss'
-import fds from '../../'
+import cssVariables from './scss/abstracts/_variables.scss'
+
 //setting up sites global variables
 
-export const UseConfig = createContext(null);
+export const useContextConfig = createContext(null);
 
 
 
-export const WebSiteConfig = (props) => {
+export const ContextComponent = (props) => {
 
     console.log(cssVariables)
     const [config, dispatchConfig] = useReducer(reducer, {
@@ -35,7 +35,7 @@ export const WebSiteConfig = (props) => {
     }
     
     return (
-       <UseConfig.Provider value={{
+       <useContextConfig.Provider value={{
                             config: [config, dispatchConfig]
                             //,AnotherOne : "whatever you think is suitable" 
         }} >
@@ -60,7 +60,7 @@ export const WebSiteConfig = (props) => {
                     }
 
             {props.children}
-        </UseConfig.Provider> 
+        </useContextConfig.Provider> 
     );
 }
  
