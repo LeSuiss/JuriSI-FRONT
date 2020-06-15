@@ -1,20 +1,19 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom'
-import HomePage from './pages/homePage/HomePage.js'
-import AdminLogin from './login/AdminLogin'
+
+import HomePage from './pages/homePage/HomePage'
+import AdminHomePage from '../components/pages/admin/adminHomePage';
 
 const Router = () => {
     return ( 
-            
+        <>
         <Switch>
             <Route exact path="/" component={HomePage}/>
-
+            <Route exact path="/admin" component={AdminHomePage}/>
             
-            {/* <Route exact path="/adminlogin" component={adminLogin} /> */}
-            {/* {localStorage.getItem('userToken')? <Route exact path ="/backOffice" component={admin}/>:''} */}
         </Switch>
-      
-     );
+</>
+    );
 }
  
 export default Router;

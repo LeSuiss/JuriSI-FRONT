@@ -10,28 +10,23 @@ export const useContextConfig = createContext(null);
 
 export const ContextComponent = (props) => {
 
-    console.log(cssVariables)
+ 
     const [config, dispatchConfig] = useReducer(reducer, {
+        dbURL: 'http://localhost:3002',
         debug: true,
-        text: "value",
-        value: 0,
         css: cssVariables
     })
     
-     console.log("ig.css")
     
     function reducer (config, action) {
         //change your state "config" based on the "action" relied to whatever element (button, input) is to  be triggered 
        
         
-        console.log(action["config"])
+
         config.css.color = "green"
+        action.config ? config = {...config, ...action.config}:''
         
-        return(
-            action.config ?
-            {...config, ...action.config}:
-            {...config}
-        )
+        return {...config}
     }
     
     return (
@@ -39,7 +34,6 @@ export const ContextComponent = (props) => {
                             config: [config, dispatchConfig]
                             //,AnotherOne : "whatever you think is suitable" 
         }} >
-            <pre>{JSON.stringify(cssVariables)}</pre>
             {config.debug &&   <div 
             style={{
                 position:"absolute", 

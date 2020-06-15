@@ -16,13 +16,12 @@ function App() {
        <> 
         <div className="App" >
             <ContextComponent>
-                
                 <Header/>
                     <div id="mainContainer">
-                        <Router/>
+                <Router/>
+
                     </div>
                 <Footer/> 
-
             </ContextComponent>
         </div>
     

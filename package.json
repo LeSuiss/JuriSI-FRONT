@@ -9,7 +9,7 @@
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "quill-image-resize": "^3.0.9",
+    "ra-data-simple-rest": "^3.5.5",
     "react": "^16.13.0",
     "react-admin": "^3.6.0",
     "react-dom": "^16.13.0",
