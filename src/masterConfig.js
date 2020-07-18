@@ -12,7 +12,7 @@ export const ContextComponent = (props) => {
 
  
     const [config, dispatchConfig] = useReducer(reducer, {
-        dbURL: 'http://localhost:3002',
+        dbURL: 'http://localhost:3000',
         debug: true,
         css: cssVariables
     })

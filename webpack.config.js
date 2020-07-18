@@ -5,12 +5,11 @@ const jsonImporter = require('node-sass-json-importer')
 
 module.exports = {
     devServer: {
-
         compress: true,
-        port: 9000
+        port: 9000,
+        contentBase: path.join(__dirname, 'test'),
       },
 
-   
     entry: [path.resolve(__dirname, 'src/index.js')],
     output: {
         path: path.resolve(__dirname, 'test'),

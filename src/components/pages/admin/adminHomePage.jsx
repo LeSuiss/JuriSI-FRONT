@@ -1,7 +1,8 @@
 // in src/App.js
 import React, {useState, useContext, useEffect} from "react";
-import { Admin, ListGuesser, Resource } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 import { useContextConfig } from '../../../masterConfig';
+import {ArticleList, ArticleEdit, ArticleCreate} from './adminTables/ArticleMethods'
 import simpleRestProvider from 'ra-data-simple-rest';
 
 const AdminHomePage = () => {
@@ -14,8 +15,13 @@ const AdminHomePage = () => {
    
 
     <Admin dataProvider={simpleRestProvider(`${config.dbURL}/admin`)} >
-        <Resource name="Articles" list={ListGuesser} />
-        <Resource name="Contracts" list={ListGuesser} />
+        <Resource 
+            name="Articles" 
+            list={ArticleList} 
+            edit={ArticleEdit} 
+            create={ArticleCreate}/>
+{/*         <Resource name="Contracts" list={ListGuesser} /> */}
+        
     </Admin>
 </>
     )
