@@ -1,16 +1,14 @@
 import React, {useContext } from 'react';
-import { useContextConfig } from '../../masterConfig';
 import { Link } from 'react-router-dom'
 
 import { Menu } from 'semantic-ui-react'
 
 
 const Header = (props) => {
-    const [config, dispatchConfig] = useContext(useContextConfig).config
 
     return (
 
-        <div style={{ border: `4px ${config.css.color} solid` }}>
+        <div style={{ border: `4px blue solid` }}>
 
             <Menu >
                 <Link className="item" to="/">Home</Link>

@@ -1,31 +1,32 @@
-import React, {useContext} from 'react';
-import './scss/App.scss';
-import 'semantic-ui-css/semantic.min.css'
 
-import Router from './components/Router'
-import {ContextComponent} from './masterConfig'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-//import color from './scss/abstracts/_variables.scss'
+import React, { createContext, useState, useRef,useEffect, useContext, useReducer } from 'react'
+import { Switch, Route, useLocation } from 'react-router-dom';
+import HomePage from './components/pages/homePage';
+import AdminPage from './components/pages/admin/AdminPage'
 
+export const dataContext = createContext(null)
 
-function App() {
+const App = ()=>{
 
-
-    return (
-       <> 
-        <div className="App" >
-            <ContextComponent>
-                <Header/>
-                    <div id="mainContainer">
-                <Router/>
-
-                    </div>
-                <Footer/> 
-            </ContextComponent>
-        </div>
+    const [state, dispatch] = useReducer(reducer, {} )
     
-    </>)
+    function reducer (state, action){
+      
+        return !!action.payload ? {...state, ...action.payload}:{...state}
+    }
+    
+    return <dataContext.Provider value={[state, dispatch]}>
+            <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/admin" component={AdminPage} />
+               
+
+                
+            </Switch>
+        </dataContext.Provider>
+    
 }
 
 export default App;
+
+
