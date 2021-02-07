@@ -35,9 +35,9 @@ useEffect(() => {
         { Object.keys(structure).length>0 && Object.entries(structure).map(([key,value])=> 
                 <Resource 
                     name={key} 
-                    list={Listing(value)} 
-                    edit={Editing(value)} 
-                    create={Creating(value)}/>
+                    list={Listing({table:key, fields:value})} 
+                    edit={Editing({table:key, fields:value})} 
+                    create={Creating({table:key, fields:value})}/>
         ) }
 
     {/*         <Resource name="Contracts" list={ListGuesser} /> */}

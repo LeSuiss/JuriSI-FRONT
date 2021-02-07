@@ -1,29 +1,38 @@
 import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, TextInput, DateInput } from 'react-admin';
+import { List, Datagrid, ReferenceArrayInput, ReferenceInput, SelectArrayInput,Edit, Create, SimpleForm, DateField, TextField, EditButton, TextInput, DateInput, SelectInput } from 'react-admin';
 
 
 
-export const Listing = (fields) => (props)=>
+export const Listing = ({table, fields}) => (props)=>
     <List {...props}>
         <Datagrid rowClick="edit">
-            {fields.map((x,y)=> <TextField key={y} source={x}/>)}
+            {fields.map((x,y)=>{
+               // if (x.slice(0,2).toLowerCase() ==="fk") return <SelectInput key={y} source={x}/>
+
+                return <TextField key={y} source={x}/>}) 
+            } 
         </Datagrid>
     </List>
 ;
 
-export const Editing = (fields)=> props => (
-    <Edit {...props}>
-        <SimpleForm >
-            {fields.map((x,y)=> <TextInput key={y} source={x}/>)}
-        </SimpleForm>
-    </Edit>
-); 
+const displayFieldsWithUserInteraction = (component) => ({table, fields})=>{
+    
+    return  props => (
+        <component {...props}>
+            <SimpleForm >
+            {fields.map((x,y)=>{
+                if (x.slice(0,2).toLowerCase() ==="fk") {
+                    return <ReferenceInput source={x} reference={x.slice(3,4).toUpperCase()+x.slice(4,x.length).toLowerCase()+'s'}>
+                   <SelectInput optionText="code" placeholder="hoho"/>
+               </ReferenceInput>}
+    
+                    return <TextInput key={y} source={x}/>}) 
+                } 
+            </SimpleForm>
+        </component>
+    );
+}
 
-export const Creating = (fields) =>(props) => (
-    <Create {...props}>
-        <SimpleForm>
-            {fields.map((x,y)=> <TextInput key={y} source={x}/>)}
-        </SimpleForm>
-    </Create>
-);
+export const Editing = displayFieldsWithUserInteraction(Edit)
+export const Creating = displayFieldsWithUserInteraction(Create)
 
