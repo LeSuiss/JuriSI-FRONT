@@ -1,7 +1,9 @@
 
 import Axios from 'axios';
+import {useRedirect} from "react-admin"
 
 const bcrypt = require('bcryptjs')
+
 export default {
     // called when the user attempts to log in
     login: async ({username, password}) =>{  
@@ -29,7 +31,7 @@ export default {
     checkError: ({ status }) => {
         if (status === 401 || status === 403) {
             localStorage.removeItem('jwt_token');
-            return Promise.reject();
+            return Promise.reject({ redirectTo: '/' });
         }
         return Promise.resolve();
     },
@@ -45,12 +47,15 @@ export default {
                 result = response.data})
             .catch(err=>console.log(err))
         } 
+        if (result.isAuth){
+            return Promise.resolve()
+        } 
         else{
-            console.log('refuse')
-            return Promise.reject();
+            if (!!localStorage.getItem('jwt_token')) localStorage.removeItem('jwt_token');
+            return Promise.reject({ redirectTo: '/' });
+
         }
-        console.log(result)
-        result.isAuth? Promise.resolve() : Promise.reject(result.message)
+
 
     },
     // called when the user navigates to a new location, to check for permissions / roles

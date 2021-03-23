@@ -6,7 +6,7 @@ import {Listing, Editing, Creating} from './adminTables/Methods'
 import simpleRestProvider from 'ra-data-simple-rest';
 import Axios from "axios";
 
-const AdminPage = () => {
+const AdminPage = (props) => {
 
     const [structure, setStructure] = useState({})
 
@@ -17,33 +17,23 @@ useEffect(() => {
         .catch(console.log)
 }, [])
 
-    const httpClient = (url, options = {}) => {
-        if (!options.headers) {
-            options.headers = new Headers({ Accept: 'application/json' });
-        }
-        const token  = localStorage.getItem('jwt_token');
-        options.headers.set('Authorization', `Bearer ${token}`);
-        return fetchUtils.fetchJson(url, options);
-    };
-
-    return <>
-    
-   { <Admin 
-        authProvider={authProvider}
-        dataProvider={simpleRestProvider(`http://localhost:3002/admin`, httpClient)} >
-        
-        { Object.keys(structure).length>0 && Object.entries(structure).map(([key,value])=> 
+    return <Admin 
+            authProvider={props.authProvider}
+            dataProvider={props.dataProvider} 
+            history = {props.history}
+        >
+        { Object.keys(structure).length>0 && 
+        Object.entries(structure)
+            .map(([key,value])=> 
                 <Resource 
                     name={key} 
                     list={Listing({table:key, fields:value})} 
                     edit={Editing({table:key, fields:value})} 
                     create={Creating({table:key, fields:value})}/>
-        ) }
-
-    {/*         <Resource name="Contracts" list={ListGuesser} /> */}
-            
-    </Admin>}
-    </>
+            ) 
+        }
+    </Admin>
+    
 }
 
 export default AdminPage;
