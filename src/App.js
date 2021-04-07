@@ -2,19 +2,20 @@
 import * as React from "react";
 import { Provider } from 'react-redux';
 import {Switch, Route} from "react-router-dom"
-const fs = require ('fs-extra')
+
 
 import Header from "./components/homePage/layout/Header"
 import HomePage from "./components/homePage/index"
 
 import { createHashHistory } from 'history';
 import simpleRestProvider from 'ra-data-simple-rest';
-import createAdminStore from './components/admin/adminStore';
+import createAdminStore from './components/Store';
 import AdminPage from "./components/admin/AdminPage"
 import authProvider from "./components/admin/Authprovider"
+import Store from "./components/Store";
 
 const history = createHashHistory();
-const App = () => {
+const App = (props) => {
     const dataProvider = simpleRestProvider(`http://localhost:3002/admin`, httpClient)
     const httpClient = (url, options = {}) => {
         if (!options.headers) {
@@ -24,20 +25,17 @@ const App = () => {
         options.headers.set('Authorization', `Bearer ${token}`);
         return fetchUtils.fetchJson(url, options);
     };
-    const componentList = async ()=>{
-        // const listing = await fs.readdir('./components/homePage')
-        // console.log(listing)
-    }
-    componentList()
+
 return    <Provider store={createAdminStore({ authProvider, dataProvider, history, })} >
+<pre> {JSON.stringify(history, undefined, 4)} </pre>
             <Switch>
                 <Route exact path="/" component={HomePage} />
-                <AdminPage             
-                        authProvider={authProvider}
-                        dataProvider={dataProvider}
-                        history={history}
-                        title="My Admin"
-                    />
+                    <AdminPage        
+                            authProvider={authProvider}
+                            dataProvider={dataProvider}
+                            history={history}
+                            title="My Admin"
+                        />
                 
 
                     
