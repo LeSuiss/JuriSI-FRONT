@@ -6,13 +6,13 @@ import {Switch, Route} from "react-router-dom"
 
 import Header from "./components/homePage/layout/Header"
 import HomePage from "./components/homePage/index"
-
+import Actions from './components/homePage/Actions'
 import { createHashHistory } from 'history';
 import simpleRestProvider from 'ra-data-simple-rest';
-import createAdminStore from './components/Store';
+import createAdminStore from './Store';
 import AdminPage from "./components/admin/AdminPage"
 import authProvider from "./components/admin/Authprovider"
-import Store from "./components/Store";
+
 
 const history = createHashHistory();
 const App = (props) => {
@@ -36,10 +36,10 @@ return    <Provider store={createAdminStore({ authProvider, dataProvider, histor
                             history={history}
                             title="My Admin"
                         />
-                
 
                     
             </Switch>
+           
            
     </Provider>
 }

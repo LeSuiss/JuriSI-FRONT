@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-import { SocialMediaIconsReact } from 'social-media-icons-react';
 
 
 const Footer = () => {
@@ -12,8 +11,6 @@ const Footer = () => {
 
 aaaaaa
             <p />
-            <SocialMediaIconsReact icon="twitter" url="https://google.com" />
-            <SocialMediaIconsReact icon="twitter" url="https://twitter.com/your-twitter-handle" />
 
 
             <div className="footer-copyright text-center py-3">

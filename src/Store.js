@@ -7,17 +7,14 @@ import {
     adminSaga,
     USER_LOGOUT,
 } from 'react-admin';
+import RootReducer from "./RootReducer"
 
 export default ({
     authProvider,
     dataProvider,
     history,
 }) => {
-    const reducer = combineReducers({
-        admin: adminReducer,
-        router: connectRouter(history),
-        // add your own reducers here
-    });
+    const reducer = RootReducer(history)
     const resettableAppReducer = (state, action) =>
         reducer(action.type !== USER_LOGOUT ? state : undefined, action);
 
