@@ -1,0 +1,26 @@
+@import 'abstracts/variables';
+// @import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+@import 'libraries/animateCss';
+@import 'libraries/semanticCorrection';
+
+
+@import 'reset/resetall';
+
+@import 'layout/navbar';
+@import 'layout/header';
+@import 'layout/footer';
+// @import 'layout/sidebar';
+// @import 'layout/forms';
+
+// @import 'components/buttons';
+// @import 'components/carousel';
+// @import 'components/slider';
+
+@import 'pages/home';
+
+@import 'themes/theme';
+@import 'themes/admin';
+
+

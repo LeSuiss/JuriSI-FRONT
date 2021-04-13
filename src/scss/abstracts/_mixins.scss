@@ -1,0 +1,115 @@
+@mixin imgBack {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top: 0px;
+    left: 0px;
+}
+
+@mixin flex($horizontal, $vertical, $flow: wrap) {
+    @if $flow == 'column' {
+     
+    display: flex;
+    justify-content: $vertical;
+    align-items: $horizontal;
+    flex-flow: $flow;   
+    }
+    @else{
+
+
+        display: flex;
+        justify-content: $horizontal;
+        align-items: $vertical;
+        flex-flow: $flow;
+    
+    }
+    
+}
+
+@mixin handleBP($breakpoint){
+    @media all and (max-width:$breakpoint){
+        @include flex(center, space-around, column);
+        >*{width:100%;}
+    }
+
+}
+
+//responsive ratio
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+    $padding: unquote(($y / $x) * 100 + '%');
+
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    }
+
+    @else {
+        padding-top: $padding;
+    }
+}
+
+/* div {
+    @include responsive-ratio(16,9);
+}
+ */
+
+
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name))+1;
+    }
+
+    @else {
+        @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+        @return null;
+    }
+}
+
+//to be completed: 
+$z-indexes: ("outdated-browser",
+    "modal",
+    "site-header",
+    "page-wrapper",
+    "site-footer"
+    
+);
+
+//Then where ever you're wanting to use a z-index value, name it the same as your class and add in it into your variables/setting file, like below. You'll never have a "z-index: 99999999;" headache again.
+
+/* .site-header {
+    z-index: z('site-header');
+}
+ */
+
+
+@mixin gradient($start-color, $end-color, $orientation) {
+    background: $start-color;
+
+    @if $orientation=='vertical' {
+        background: -webkit-linear-gradient(top, $start-color, $end-color);
+        background: linear-gradient(to bottom, $start-color, $end-color);
+    }
+
+    @else if $orientation=='horizontal' {
+        background: -webkit-linear-gradient(left, $start-color, $end-color);
+        background: linear-gradient(to right, $start-color, $end-color);
+    }
+
+    @else {
+        background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+        background: radial-gradient(ellipse at center, $start-color, $end-color);
+    }
+}
+
+/* .gradient {
+    @include gradient(#07c, #06f, vertical);
+  } */
+
+
+@mixin C2bg4{
+    background-color: $forth_color;
+    color: $second_color;
+}
