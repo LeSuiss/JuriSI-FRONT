@@ -9,11 +9,7 @@ import {
 } from 'react-admin';
 import RootReducer from "./RootReducer"
 
-export default ({
-    authProvider,
-    dataProvider,
-    history,
-}) => {
+export default function Store ({ authProvider, dataProvider, history }) {
     const reducer = RootReducer(history)
     const resettableAppReducer = (state, action) =>
         reducer(action.type !== USER_LOGOUT ? state : undefined, action);
@@ -40,7 +36,7 @@ export default ({
   
     const store = createStore(
         resettableAppReducer,
-        { /* set your initial state here */ },
+        { test:"test"},
         composeEnhancers(
             applyMiddleware(
                 sagaMiddleware,

@@ -1,18 +1,11 @@
-import React, { useContext,useEffect, useState, useReducer, useRef} from 'react';
+import React from 'react';
 
-import Header from './layout/Header'
-import Footer from './layout/Footer'
-
-const HomePage = (props) => {
-    
-    return(
-        <div >
-            <Header/>
-        MAIN
-            <Footer/>
-        </div>
-    )
+function HomePage() {
+  return (
+    <div>
+fds
+    </div>
+  )
 }
- 
-export default HomePage;
 
+export default HomePage
